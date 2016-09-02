@@ -5,6 +5,7 @@
   "private": true,
   "main": "main.js",
   "scripts": {
+    "clean": "rimraf release/*",
     "test": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --compilers js:babel-register --recursive --require ./test/setup.js test/**/*.spec.js",
     "test-watch": "npm test -- --watch",
     "test-e2e": "cross-env NODE_ENV=test BABEL_DISABLE_CACHE=1 mocha --compilers js:babel-register --require ./test/setup.js ./test/e2e.js",
@@ -17,6 +18,7 @@
     "start-hot": "cross-env HOT=1 NODE_ENV=development electron -r babel-register -r babel-polyfill ./main.development",
     "package": "cross-env NODE_ENV=production node -r babel-register -r babel-polyfill package.js",
     "package-all": "npm run package -- --all",
+    "package-main": "npm run clean && electron-packager . --platform=darwin,win32 --arch=x64 --icon=app/app --out=release --overwrite=true",
     "postinstall": "node node_modules/fbjs-scripts/node/check-dev-engines.js package.json",
     "dev": "concurrently --kill-others \"npm run hot-server\" \"npm run start-hot\""
   },
@@ -64,6 +66,7 @@
     "node-libs-browser": "^1.0.0",
     "react-addons-test-utils": "^15.3.1",
     "redux-logger": "^2.6.1",
+    "rimraf": "2.5.4",
     "sinon": "^1.17.5",
     "spectron": "^3.3.0",
     "style-loader": "^0.13.1",
