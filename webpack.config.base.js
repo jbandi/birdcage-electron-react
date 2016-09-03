@@ -9,7 +9,9 @@ export default {
     }, {
       test: /\.json$/,
       loader: 'json-loader'
-    }]
+    },
+    { test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/, loader : 'file-loader?name=./app/[name].[ext]'}, // fonts should be put into ./app
+    ]
   },
   output: {
     path: path.join(__dirname, 'dist'),
