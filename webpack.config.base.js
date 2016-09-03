@@ -22,6 +22,9 @@ export default {
     extensions: ['', '.js', '.jsx', '.json'],
     packageMains: ['webpack', 'browser', 'web', 'browserify', ['jam', 'main'], 'main']
   },
+  resolveLoader: {
+    root: path.join(__dirname, 'node_modules')
+  },
   plugins: [
 
   ],

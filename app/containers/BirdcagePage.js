@@ -1,16 +1,19 @@
 import Birdcage from '../components/Birdcage';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as CounterActions from '../actions/counter';
+
+import * as TweetActions from '../actions/tweets'
 
 function mapStateToProps(state) {
   return {
-    todos: state.todos
+    tweets: state.tweets
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators(CounterActions, dispatch);
+  return {
+    actions: bindActionCreators(TweetActions, dispatch)
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Birdcage);

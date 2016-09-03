@@ -5,7 +5,8 @@ import TweetList from './TweetList'
 
 export default class Birdcage extends Component {
   static propTypes = {
-    todos: PropTypes.array.isRequired
+    tweets: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
   };
 
   static defaultProps = {
@@ -25,7 +26,7 @@ export default class Birdcage extends Component {
       <NavPane openLength={200} push color={this.props.color} theme={this.props.theme} canPaneToggle={false}
                defaultIsPaneExpanded={false} paneExpandedLength="52px">
         {this.renderItem('Cage Entry', <TweetDialog/>)}
-        {this.renderItem('Full Cage', <TweetList todos={this.props.todos}/>)}
+        {this.renderItem('Full Cage', <TweetList {...this.props}/>)}
       </NavPane>
     );
   }
