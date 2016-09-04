@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Dialog, Button } from 'react-desktop/macOs';
 // import {repo} from 'birdcage-data-mock';
-import {repo} from 'birdcage-data-couchdb';
+// import {repo} from 'birdcage-data-couchdb';
+import {repo} from 'birdcage-data-rest';
 
 export default class extends Component {
 
