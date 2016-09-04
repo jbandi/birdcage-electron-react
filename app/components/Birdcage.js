@@ -3,6 +3,10 @@ import {NavPane, NavPaneItem, Text} from 'react-desktop/windows';
 import TweetDialog from './TweetDialog'
 import TweetList from './TweetList'
 
+import {repo} from 'birdcage-data-mock';
+// import {repo} from 'birdcage-data-couchdb';
+// import {repo} from 'birdcage-data-rest';
+
 export default class Birdcage extends Component {
   static propTypes = {
     tweets: PropTypes.array.isRequired,
@@ -25,8 +29,8 @@ export default class Birdcage extends Component {
     return (
       <NavPane openLength={200} push color={this.props.color} theme={this.props.theme} canPaneToggle={false}
                defaultIsPaneExpanded={false} paneExpandedLength="52px">
-        {this.renderItem('Cage Entry', <TweetDialog/>)}
-        {this.renderItem('Full Cage', <TweetList {...this.props}/>)}
+        {this.renderItem('Cage Entry', <TweetDialog repo={repo}/>)}
+        {this.renderItem('Full Cage', <TweetList {...this.props} repo={repo}/>)}
       </NavPane>
     );
   }
