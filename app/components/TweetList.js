@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { Dialog, Button } from 'react-desktop/macOs';
-// import {repo} from 'birdcage-data-mock';
-// import {repo} from 'birdcage-data-couchdb';
-// import {repo} from 'birdcage-data-rest';
 
 export default class extends Component {
 
@@ -10,22 +7,25 @@ export default class extends Component {
     const {tweets} = this.props;
     return (
       <ul className="list-group">
-        <li className="list-group-header">
-          <input className="form-control" type="text" placeholder="Search for text"/>
-        </li>
+        {/*<li className="list-group-header">*/}
+          {/*<input className="form-control" type="text" placeholder="Search for text"/>*/}
+        {/*</li>*/}
 
         <b> Tweets waiting: {tweets.length} </b>
 
-        {tweets.map(t => (
-          <li className="list-group-item" key={t._id}>
+        {tweets.map(t => {
+
+          const date = t.created ? t.created.toLocaleString() : t.last_sent;
+
+          return (<li className="list-group-item" key={t._id}>
             <img className="media-object pull-left" src="./assets/img/twitter.png" width="32" height="32"/>
             <div className="media-body">
-              <strong>{t.title}</strong>
-              <p>{t.created.toLocaleString()}</p>
+              <strong>{t.content}</strong>
+              <p>{date}</p>
             </div>
           </li>
-          )
-        )}
+          );
+        })}
 
       </ul>
     );
